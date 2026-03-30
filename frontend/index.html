@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SGRH-Employees</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">SGRH <span>Employees</span></div>
+      <small>Gestión de Recursos Humanos</small>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" data-page="dashboard">
+        <span class="icon">📊</span> Dashboard
+      </a>
+      <a href="employees.html" data-page="employees">
+        <span class="icon">👥</span> Empleados
+      </a>
+      <a href="departments.html" data-page="departments">
+        <span class="icon">🏢</span> Departamentos
+      </a>
+      <a href="incidencias.html" data-page="incidencias">
+        <span class="icon">📋</span> Incidencias RRHH
+      </a>
+    </nav>
+    <div class="sidebar-footer">Backend Intermedio · MySQL Employees</div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <h1>📊 Dashboard</h1>
+      <div id="weather-widget">Cargando clima...</div>
+    </header>
+
+    <!-- Contenido -->
+    <div class="content">
+
+      <!-- Métricas -->
+      <div class="metrics-grid" id="metrics-grid">
+        <div class="loading"><div class="spinner"></div> Cargando métricas...</div>
+      </div>
+
+      <!-- Dos columnas -->
+      <div class="two-col">
+
+        <!-- Empleados por departamento -->
+        <div class="card">
+          <div class="card-header">
+            <h2>👥 Empleados por departamento</h2>
+          </div>
+          <div class="card-body">
+            <div id="dept-bars">
+              <div class="loading"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Incidencias recientes -->
+        <div class="card">
+          <div class="card-header">
+            <h2>📋 Incidencias recientes</h2>
+            <a href="incidencias.html" class="btn btn-secondary btn-sm">Ver todas</a>
+          </div>
+          <div class="card-body" style="padding:0">
+            <div id="recent-incidencias">
+              <div class="loading"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /content -->
+  </div><!-- /main -->
+
+  <div id="toast-container"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

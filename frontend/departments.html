@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Departamentos | SGRH-Employees</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">SGRH <span>Employees</span></div>
+      <small>Gestión de Recursos Humanos</small>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" data-page="dashboard"><span class="icon">📊</span> Dashboard</a>
+      <a href="employees.html" data-page="employees"><span class="icon">👥</span> Empleados</a>
+      <a href="departments.html" data-page="departments"><span class="icon">🏢</span> Departamentos</a>
+      <a href="incidencias.html" data-page="incidencias"><span class="icon">📋</span> Incidencias RRHH</a>
+    </nav>
+    <div class="sidebar-footer">Backend Intermedio · MySQL Employees</div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main">
+    <header class="topbar">
+      <h1>🏢 Departamentos</h1>
+      <div id="weather-widget">Cargando clima...</div>
+    </header>
+
+    <div class="content">
+
+      <!-- Cards de departamentos -->
+      <div id="dept-grid" class="dept-grid">
+        <div class="loading"><div class="spinner"></div> Cargando departamentos...</div>
+      </div>
+
+      <!-- Panel de empleados del departamento seleccionado -->
+      <div id="dept-detail-card" class="card" style="display:none">
+        <div class="card-header">
+          <h2 id="dept-detail-title">Empleados del departamento</h2>
+          <button class="btn btn-secondary btn-sm" onclick="closeDeptDetail()">✕ Cerrar</button>
+        </div>
+        <div id="dept-employees-container">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+        <div id="dept-pagination" class="pagination" style="padding:16px"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/departments.js"></script>
+</body>
+</html>

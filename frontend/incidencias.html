@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incidencias RRHH | SGRH-Employees</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">SGRH <span>Employees</span></div>
+      <small>Gestión de Recursos Humanos</small>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" data-page="dashboard"><span class="icon">📊</span> Dashboard</a>
+      <a href="employees.html" data-page="employees"><span class="icon">👥</span> Empleados</a>
+      <a href="departments.html" data-page="departments"><span class="icon">🏢</span> Departamentos</a>
+      <a href="incidencias.html" data-page="incidencias"><span class="icon">📋</span> Incidencias RRHH</a>
+    </nav>
+    <div class="sidebar-footer">Backend Intermedio · MySQL Employees</div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main">
+    <header class="topbar">
+      <h1>📋 Incidencias RRHH</h1>
+      <div id="weather-widget">Cargando clima...</div>
+    </header>
+
+    <div class="content">
+      <div class="two-col">
+
+        <!-- Formulario alta/edición -->
+        <div class="card">
+          <div class="card-header">
+            <h2 id="form-title">➕ Nueva incidencia</h2>
+          </div>
+          <div class="card-body">
+            <form id="incidencia-form" novalidate>
+              <input type="hidden" id="edit-id">
+
+              <div class="form-group">
+                <label for="field-emp_no">Número de empleado <span style="color:var(--danger)">*</span></label>
+                <input type="number" id="field-emp_no" placeholder="Ej: 10001" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="field-tipo">Tipo de incidencia <span style="color:var(--danger)">*</span></label>
+                  <select id="field-tipo" required>
+                    <option value="">-- Selecciona --</option>
+                    <option>Ausencia</option>
+                    <option>Retardo</option>
+                    <option>Permiso</option>
+                    <option>Conducta</option>
+                    <option>Reconocimiento</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="field-fecha">Fecha <span style="color:var(--danger)">*</span></label>
+                  <input type="date" id="field-fecha" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="field-descripcion">Descripción <span style="color:var(--danger)">*</span></label>
+                <textarea id="field-descripcion" placeholder="Describe la incidencia..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="field-estatus">Estatus</label>
+                <select id="field-estatus">
+                  <option value="Abierta">Abierta</option>
+                  <option value="En proceso">En proceso</option>
+                  <option value="Cerrada">Cerrada</option>
+                </select>
+              </div>
+
+              <div class="flex" style="gap:10px; margin-top:6px">
+                <button type="submit" class="btn btn-primary" id="btn-submit">💾 Guardar</button>
+                <button type="button" class="btn btn-secondary" id="btn-cancel-edit" style="display:none">✕ Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Filtros y listado -->
+        <div class="card">
+          <div class="card-header">
+            <h2>📄 Lista de incidencias</h2>
+          </div>
+          <div class="card-body" style="padding:14px 20px 10px">
+            <!-- Filtros -->
+            <div class="flex" style="flex-wrap:wrap; gap:10px; margin-bottom:14px">
+              <input type="number" id="filter-emp" placeholder="Filtrar por ID empleado" style="padding:8px 12px; border:1px solid var(--border); border-radius:8px; width:190px; font-size:0.875rem">
+              <select id="filter-estatus" style="padding:8px 12px; border:1px solid var(--border); border-radius:8px; font-size:0.875rem">
+                <option value="">Todos los estatus</option>
+                <option value="Abierta">Abierta</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Cerrada">Cerrada</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="btn-filter">🔍 Filtrar</button>
+              <button class="btn btn-secondary btn-sm" id="btn-reset-filter">↺ Limpiar</button>
+            </div>
+          </div>
+          <div id="incidencias-table">
+            <div class="loading"><div class="spinner"></div> Cargando...</div>
+          </div>
+          <div id="inc-pagination" class="pagination" style="padding:14px"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación de eliminación -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>⚠️ Confirmar eliminación</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar esta incidencia? Esta acción no se puede deshacer.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-danger" id="btn-confirm-delete">🗑️ Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/incidencias.js"></script>
+</body>
+</html>
