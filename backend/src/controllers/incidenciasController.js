@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-// ── GET /api/incidencias ──────────────────────────────────────
+
 const getIncidencias = async (req, res, next) => {
   try {
     const { emp_no, estatus, page = 1, limit = 20 } = req.query;
@@ -50,7 +50,7 @@ const getIncidencias = async (req, res, next) => {
   }
 };
 
-// ── GET /api/incidencias/:id ──────────────────────────────────
+
 const getIncidenciaById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -70,12 +70,12 @@ const getIncidenciaById = async (req, res, next) => {
   }
 };
 
-// ── POST /api/incidencias ─────────────────────────────────────
+
 const createIncidencia = async (req, res, next) => {
   try {
     const { emp_no, tipo, fecha, descripcion, estatus } = req.body;
 
-    // Validaciones
+  
     if (!emp_no || !tipo || !fecha || !descripcion) {
       return res.status(400).json({
         success: false,
@@ -89,7 +89,6 @@ const createIncidencia = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'La descripción debe tener al menos 5 caracteres.' });
     }
 
-    // Verificar que el empleado existe
     const [[emp]] = await pool.query('SELECT emp_no FROM employees WHERE emp_no = ?', [emp_no]);
     if (!emp) {
       return res.status(404).json({ success: false, message: `El empleado con ID ${emp_no} no existe.` });
@@ -112,7 +111,7 @@ const createIncidencia = async (req, res, next) => {
   }
 };
 
-// ── PUT /api/incidencias/:id ──────────────────────────────────
+
 const updateIncidencia = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -142,7 +141,7 @@ const updateIncidencia = async (req, res, next) => {
   }
 };
 
-// ── DELETE /api/incidencias/:id ───────────────────────────────
+
 const deleteIncidencia = async (req, res, next) => {
   try {
     const { id } = req.params;

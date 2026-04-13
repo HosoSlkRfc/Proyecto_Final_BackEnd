@@ -1,6 +1,4 @@
-/**
- * dashboard.js — Lógica del dashboard principal.
- */
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   setActiveNav('dashboard');

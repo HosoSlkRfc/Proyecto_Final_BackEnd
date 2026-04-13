@@ -1,7 +1,4 @@
-/**
- * Middleware global de manejo de errores.
- * Captura cualquier error no controlado y responde con JSON.
- */
+
 const errorHandler = (err, req, res, next) => {
   console.error(`[ERROR] ${req.method} ${req.originalUrl} →`, err.message);
 

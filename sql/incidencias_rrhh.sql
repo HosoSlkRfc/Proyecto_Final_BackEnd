@@ -1,7 +1,4 @@
--- ============================================================
--- SGRH-Employees | Script de tabla adicional: incidencias_rrhh
--- Ejecutar sobre la base de datos employees ya importada
--- ============================================================
+
 
 USE employees;
 
@@ -18,7 +15,7 @@ CREATE TABLE IF NOT EXISTS incidencias_rrhh (
     REFERENCES employees(emp_no) ON DELETE CASCADE
 );
 
--- Datos de ejemplo (empleados reales de la base employees)
+
 INSERT INTO incidencias_rrhh (emp_no, tipo, fecha, descripcion, estatus) VALUES
 (10001, 'Ausencia',          '2024-03-01', 'Falta injustificada sin aviso previo.',           'Cerrada'),
 (10002, 'Retardo',           '2024-03-05', 'Llegó 45 minutos tarde sin justificación.',       'Cerrada'),

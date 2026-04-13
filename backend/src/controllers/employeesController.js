@@ -1,6 +1,5 @@
 const pool = require('../config/db');
 
-// ── GET /api/employees?search=&page=&limit= ──────────────────
 const getEmployees = async (req, res, next) => {
   try {
     const search = req.query.search || '';
@@ -67,7 +66,7 @@ const getEmployees = async (req, res, next) => {
   }
 };
 
-// ── GET /api/employees/:id ────────────────────────────────────
+
 const getEmployeeById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -103,12 +102,12 @@ const getEmployeeById = async (req, res, next) => {
   }
 };
 
-// ── GET /api/employees/:id/historial ─────────────────────────
+
 const getEmployeeHistorial = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    // Verificar que el empleado existe
+  
     const [[emp]] = await pool.query(
       `SELECT emp_no, first_name, last_name FROM employees WHERE emp_no = ?`, [id]
     );

@@ -1,7 +1,3 @@
-/**
- * weather.js — Widget de clima y fecha presente en todas las páginas.
- * Actualiza el elemento #weather-widget del DOM.
- */
 
 function updateDate() {
   const now = new Date();
@@ -15,7 +11,7 @@ async function loadWeatherWidget() {
   const widget = document.getElementById('weather-widget');
   if (!widget) return;
 
-  // Mostrar fecha de inmediato
+
   const { dateStr, timeStr } = updateDate();
   widget.innerHTML = `
     <div class="weather-icon"><div class="placeholder">⏳</div></div>
@@ -34,7 +30,7 @@ async function loadWeatherWidget() {
     const res = await WeatherAPI.get();
 
     if (!res.success || !res.data.temp) {
-      // Sin key o error → mostrar solo fecha
+  
       widget.innerHTML = `
         <div class="weather-icon"><div class="placeholder">🌡️</div></div>
         <div class="weather-info">
@@ -80,7 +76,7 @@ async function loadWeatherWidget() {
   }
 }
 
-// ── Toast de notificaciones ───────────────────────────────
+
 function showToast(message, type = 'success') {
   let container = document.getElementById('toast-container');
   if (!container) {
@@ -96,7 +92,7 @@ function showToast(message, type = 'success') {
   setTimeout(() => toast.remove(), 3200);
 }
 
-// ── Helpers de UI ─────────────────────────────────────────
+
 function formatDate(dateStr) {
   if (!dateStr) return '—';
   const d = new Date(dateStr);
@@ -119,5 +115,5 @@ function setActiveNav(page) {
   });
 }
 
-// Inicializar widget al cargar
+
 document.addEventListener('DOMContentLoaded', loadWeatherWidget);

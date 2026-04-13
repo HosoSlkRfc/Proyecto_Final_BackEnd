@@ -1,7 +1,3 @@
-/**
- * employee-detail.js — Vista de detalle de un empleado.
- * Muestra info básica, historial de puestos/salarios/depts e incidencias.
- */
 
 let empId = null;
 

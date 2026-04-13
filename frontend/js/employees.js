@@ -1,6 +1,3 @@
-/**
- * employees.js — Lista y búsqueda de empleados con paginación.
- */
 
 let currentPage = 1;
 let currentSearch = '';

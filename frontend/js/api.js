@@ -1,7 +1,3 @@
-/**
- * api.js — Módulo centralizado de llamadas al backend.
- * Todas las páginas importan este archivo para hacer fetch.
- */
 
 const API_BASE = '/api';
 
@@ -28,20 +24,19 @@ async function apiFetch(path, opts = {}) {
   return data;
 }
 
-// ── Employees ─────────────────────────────────────────────
+
 const EmployeesAPI = {
   getAll:      (params = {}) => apiFetch(`/employees?${new URLSearchParams(params)}`),
   getById:     (id)          => apiFetch(`/employees/${id}`),
   getHistorial:(id)          => apiFetch(`/employees/${id}/historial`)
 };
 
-// ── Departments ───────────────────────────────────────────
 const DepartmentsAPI = {
   getAll:        ()          => apiFetch('/departments'),
   getEmployees:  (dept, p)   => apiFetch(`/departments/${dept}/employees?${new URLSearchParams(p || {})}`)
 };
 
-// ── Incidencias ───────────────────────────────────────────
+
 const IncidenciasAPI = {
   getAll:    (params = {}) => apiFetch(`/incidencias?${new URLSearchParams(params)}`),
   getById:   (id)          => apiFetch(`/incidencias/${id}`),
@@ -50,12 +45,11 @@ const IncidenciasAPI = {
   remove:    (id)          => apiFetch(`/incidencias/${id}`,{ method: 'DELETE' })
 };
 
-// ── Dashboard ─────────────────────────────────────────────
 const DashboardAPI = {
   getResumen: () => apiFetch('/dashboard/resumen')
 };
 
-// ── Weather ───────────────────────────────────────────────
+
 const WeatherAPI = {
   get: () => apiFetch('/weather')
 };

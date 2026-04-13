@@ -1,12 +1,11 @@
 const axios = require('axios');
 
-// ── GET /api/weather ──────────────────────────────────────────
 const getWeather = async (req, res, next) => {
   try {
     const apiKey = process.env.WEATHER_API_KEY;
     const city   = process.env.WEATHER_CITY || 'Mexico City';
 
-    // Si no hay key configurada, devolver datos vacíos de forma controlada
+
     if (!apiKey || apiKey === 'your_api_key_here') {
       return res.json({
         success: false,

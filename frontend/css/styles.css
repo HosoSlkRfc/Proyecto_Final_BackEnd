@@ -468,7 +468,7 @@ tbody tr:hover { background: #f7f9ff; }
 .dept-card .dept-count-label { font-size: 0.75rem; color: var(--text-muted); }
 .dept-card .dept-manager { font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; }
 
-/* ── Toast de notificación ────────────────────────────────── */
+
 #toast-container {
   position: fixed;
   bottom: 24px;
@@ -496,7 +496,6 @@ tbody tr:hover { background: #f7f9ff; }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* ── Loader ───────────────────────────────────────────────── */
 .loading {
   display: flex;
   align-items: center;
@@ -516,7 +515,7 @@ tbody tr:hover { background: #f7f9ff; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Empty state ──────────────────────────────────────────── */
+
 .empty-state {
   text-align: center;
   padding: 40px 20px;
@@ -525,7 +524,7 @@ tbody tr:hover { background: #f7f9ff; }
 .empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 10px; }
 .empty-state p { font-size: 0.9rem; }
 
-/* ── Modal ────────────────────────────────────────────────── */
+
 .modal-overlay {
   display: none;
   position: fixed;
@@ -576,7 +575,7 @@ tbody tr:hover { background: #f7f9ff; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Bar chart simple (inline CSS bars) ──────────────────── */
+
 .bar-list { display: flex; flex-direction: column; gap: 10px; }
 .bar-item  { font-size: 0.82rem; }
 .bar-item  .bar-label { display: flex; justify-content: space-between; margin-bottom: 4px; }
@@ -584,7 +583,7 @@ tbody tr:hover { background: #f7f9ff; }
 .bar-track { background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; }
 .bar-fill  { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.6s ease; }
 
-/* ── Utilidades ───────────────────────────────────────────── */
+
 .text-muted  { color: var(--text-muted); }
 .text-right  { text-align: right; }
 .text-center { text-align: center; }

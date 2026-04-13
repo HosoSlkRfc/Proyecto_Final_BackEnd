@@ -1,6 +1,4 @@
-/**
- * departments.js — Lista de departamentos y empleados por departamento.
- */
+
 
 const DEPT_COLORS = [
   '#3a7bd5','#e74c3c','#27ae60','#f39c12','#9b59b6',

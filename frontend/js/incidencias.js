@@ -1,6 +1,4 @@
-/**
- * incidencias.js — CRUD completo de incidencias RRHH.
- */
+
 
 let incPage = 1;
 let filterEmp    = '';
@@ -10,7 +8,6 @@ let pendingDeleteId = null;
 document.addEventListener('DOMContentLoaded', () => {
   setActiveNav('incidencias');
 
-  // Prellenar emp_no si viene por query param
   const params = new URLSearchParams(window.location.search);
   if (params.get('emp_no')) {
     document.getElementById('field-emp_no').value = params.get('emp_no');
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadForEdit(params.get('edit'));
   }
 
-  // Fijar fecha de hoy por defecto
+
   document.getElementById('field-fecha').value = new Date().toISOString().split('T')[0];
 
   loadIncidencias();
@@ -31,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-confirm-delete').addEventListener('click', confirmDelete);
 });
 
-/* ── Carga y renderizado ──────────────────────────────────── */
+
 
 async function loadIncidencias() {
   const container = document.getElementById('incidencias-table');
@@ -102,7 +99,7 @@ function renderPagination({ total, page, limit, totalPages }) {
 
 function goIncPage(page) { incPage = page; loadIncidencias(); }
 
-/* ── Filtros ──────────────────────────────────────────────── */
+
 
 function applyFilter() {
   filterEmp     = document.getElementById('filter-emp').value.trim();
@@ -119,7 +116,7 @@ function resetFilter() {
   loadIncidencias();
 }
 
-/* ── Formulario ───────────────────────────────────────────── */
+
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -133,7 +130,7 @@ async function handleSubmit(e) {
     estatus:     document.getElementById('field-estatus').value
   };
 
-  // Validación básica en frontend
+  
   if (!body.emp_no || !body.tipo || !body.fecha || !body.descripcion.trim()) {
     showToast('Completa todos los campos requeridos.', 'error');
     return;
@@ -196,7 +193,7 @@ function resetForm() {
   document.getElementById('btn-cancel-edit').style.display = 'none';
 }
 
-/* ── Eliminación ──────────────────────────────────────────── */
+
 
 function askDelete(id) {
   pendingDeleteId = id;

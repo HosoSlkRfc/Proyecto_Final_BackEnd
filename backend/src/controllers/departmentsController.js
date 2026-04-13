@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-// ── GET /api/departments ──────────────────────────────────────
+
 const getDepartments = async (req, res, next) => {
   try {
     const [rows] = await pool.query(`
